@@ -2,12 +2,12 @@
 <div id="battle">
   <div class="battle-arena">
     <div class="tutorial-card-opponent">
-    <Card :HP="opponent.hp" :Name="opponent.name" :Attacks="opponent.attacks" :Img="opponent.image" :Type="opponent.type" 
-          :Level="opponent.level" :HPBar="opponent.HPBar" ></Card>
+    <Card :HP="opponent.hp" :Name="opponent.name" :ATK="opponent.ATK" :DEF="opponent.DEF" :SPD="opponent.SPD"
+     :Img="opponent.image" :Type="opponent.type" :Level="opponent.level" :HPBar="opponent.HPBar" ></Card>
     </div>
     <div class="tutorial-card-player">
-    <Card :HP="player.hp" :Name="player.name" :Attacks="player.attacks" :Img="player.image" :Type="player.type" :Player="player"
-          :Level="player.level" :HPBar="player.HPBar"></Card>
+    <Card :HP="player.hp" :Name="player.name" :ATK="player.ATK" :DEF="player.DEF" :SPD="player.SPD" :Img="player.image" 
+          :Type="player.type" :Level="player.level" :HPBar="player.HPBar" :Player="player"></Card>
     </div>
     <div class="bottom-menu">
         <div class="battle-text text-box-left">
@@ -58,7 +58,10 @@ export default {
             maxHP: 100,
             level: 5,
             attacks: ['Ascuas','Sofoco', 'Lanzallamas', 'Fuego Fatuo'],
-            HpBar: { width: '100%'}
+            HpBar: { width: '100%'},
+            ATK: 15, 
+            DEF: 15, 
+            SPD:15
         },
         player:{
             image: 'images/Cartas/'+this.$route.params.pokemon+'.png',
@@ -69,7 +72,10 @@ export default {
             level: 5,
             attacks: ['Hoja','Fotosintesis', 'Rama', 'Fruta'],
             attacksDamage: [15,40,50,25],
-            HpBar:  { width: '100%' }
+            HpBar:  { width: '100%' },
+            ATK: 15, 
+            DEF: 15, 
+            SPD:15
         },
         battleText: "What will "+ this.$route.params.pokemon+ " do?",
         battleOptions: ["Fight", "Cards", "Item", "Run"],

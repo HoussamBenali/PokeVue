@@ -11,14 +11,7 @@
     <b-navbar-toggle target="nav-collapse"/>
     
     <b-collapse id="nav-collapse" is-nav>
-      <!-- Left aligned nav items 
-      <b-navbar-nav>
-        <b-nav-item href="#">Link</b-nav-item>
-        <b-nav-item href="#" disabled>Disabled</b-nav-item>
-      </b-navbar-nav>
-      -->
 
-      <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto" v-if="!user">
  
         <b-nav-item href="#" right>
@@ -40,18 +33,7 @@
           <a href="javascript:void(0)" @click="Logout"  active-class="active" class="navindex">Logout</a>
         </b-nav-item>
         </b-navbar-nav>
-         <!--
-        <b-nav-item-dropdown right>
-          Using 'button-content' slot 
-          <template #button-content>
-            <em>User</em>
-          </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-         
-        </b-nav-item-dropdown>
-        -->
-         
+
       
       
     </b-collapse>

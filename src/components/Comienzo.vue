@@ -17,10 +17,9 @@
     <div class="card">
       <img class="card-img-top" :src="CardsPath +'Bulbasaur.png'" alt="bulbasaur">
       <span class="card-name">Bulbasaur</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-attack">Attack 1</span>
+      <span class="card-text">ATK: 40</span>
+      <span class="card-text">DEF: 35</span>
+      <span class="card-attack">SPD: 5</span>
     </div>
     </router-link>
 
@@ -30,21 +29,19 @@
       <span class="card-name"><img class="types-icon" :src="IconsPath+'Fire.png'" /> 
        Charmander 
       <img class="types-icon" :src="IconsPath+'Fire.png'" /></span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-attack">Attack 1</span>
+      <span class="card-text">ATK: 45</span>
+      <span class="card-text">DEF: 25</span>
+      <span class="card-attack">SPD: 10</span>
     </div>
     </router-link>
-
+    
     <router-link class="router" to="tutorial/Squirtle">
     <div class="card">
       <img class="card-img-top" :src="CardsPath +'Squirtle.png'" alt="squirtle">
       <span class="card-name">Squirtle</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-text">Attack 1</span>
-      <span class="card-attack">Attack 1</span>
+      <span class="card-text">ATK: 35</span>
+      <span class="card-text">DEF:40</span>
+      <span class="card-attack">SPD: 5</span>
     </div>
     </router-link>
   </div>

@@ -68,7 +68,7 @@ export default {
   background-attachment: fixed;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch;
   height: 100vh;
      
 }

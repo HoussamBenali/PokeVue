@@ -27,6 +27,7 @@
   position: absolute;
   top: 24vh;
   margin-left: 1vw;
+  flex: 1 100%;
 }
 
 .bottom-menu { 

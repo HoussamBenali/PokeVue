@@ -12,10 +12,9 @@
             {{Name}}
            <img class="types-icon" :src="IconsPath+Type+'.png'" />
       </span>
-      <span class="card-text">{{Attacks[0]}}</span>
-      <span class="card-text">{{Attacks[1]}}</span>
-      <span class="card-text">{{Attacks[2]}}</span>
-      <span class="card-attack">{{Attacks[3]}}</span>
+      <span class="card-text">ATK: {{ATK}}</span>
+      <span class="card-text">DEF: {{DEF}}</span>
+      <span class="card-attack">SPD: {{SPD}}</span>
     </div>
 </template>
 
@@ -28,16 +27,19 @@ export default {
                 CardsPath: "/images/Cartas/",
                 IconsPath: "/images/Types/",
                 maxHP: this.HP,
+                
             };
         },
     props: {
-        Player:{},
+        Player: {},
         Name: {},
         Type: {},
         Level: {},
         HP: {},
         Img: {},
-        Attacks: {},
+        ATK:{},
+        DEF: {},
+        SPD: {},
         HpBar: {}
     },
 
