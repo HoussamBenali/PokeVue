@@ -1,0 +1,167 @@
+@media (min-width: 630px) {
+
+.card{
+    min-width: 125px;
+    max-width: 170px;
+    max-height: 350px;
+    font-size: 3vw;
+    width: 12vw;
+   
+    background: linear-gradient( to top left, rgb(77, 76, 76), white, rgb(90, 90, 90));
+    background-size:300% 300%;
+    margin: 0vw;
+    border: solid black 2px !important;
+    animation: reflect 3s infinite linear;
+    /*animation-direction: alternate;*/
+}
+
+@keyframes reflect {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50% ;
+    }
+}
+.card-img-top{
+    border: black 1px solid;
+    margin-left: 17px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 130px;
+    min-width: 90px;
+    max-height: 130px;
+    min-height: 70px;
+    width: 9vw;
+    height: 18vh;
+    background-color: white;
+}
+
+
+
+.card:focus{
+    border: solid 4px blue !important;
+}
+
+
+.card-name{
+    padding: 0.5vh;
+    margin: 0px;
+    background-color: black;
+    color: white;
+    font-size: 1.4vh;
+}
+
+.card-text{
+    border-bottom: solid 2px black;
+    font-size: 1vw;
+    text-decoration: none;
+}
+
+.card-attack{
+    font-size: 1vw;
+}
+
+.router{
+    text-decoration: none !important;
+    color: black !important;
+    margin-top: 2vh;
+}
+
+.router:hover{
+    text-decoration: none;
+    padding: 0;
+    background-color: blue;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.types-icon{
+    max-width: 18px;
+    margin-bottom: 0.1vh;
+}
+
+@font-face {
+    font-family: PokemonSolid;
+    src: url('../fonts/Pokemon Solid.ttf');
+}
+
+.welcome{
+    font-family: "PokemonSolid";
+    color: yellow;
+    background-color: black;
+    width: 100%;
+    font-size: 30px;
+    height: 65px;
+    padding-top: 10px;
+}
+
+
+.centerWelcome{
+    padding: 5vh;
+}
+
+ 
+.hp-bar-fill-opponent{
+    position: absolute;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+.hp-bar-fill-player{
+    position: absolute;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+.hp-bar{
+    position: relative;
+    height: 15px;
+    width: 80%;
+    left: 1vw;
+    border-radius: 20px;
+    background: grey;
+    opacity: 0.5;
+    padding: 0;
+    margin: 0;
+  }
+  
+.level{
+    position: relative;
+    opacity: 0.7;
+    font-size: 16px;
+    font-family: "Roboto Condensed";
+    padding: 0;
+    margin: 0;
+  }
+  
+.player-level{
+  
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.7;
+    font-size: 16px;
+    font-family: "Roboto Condensed";
+  }
+  
+.hp{
+    position: relative;
+    display: block;
+    text-align: center;
+    opacity: 1;
+    color: white;
+    font-size: 13px;
+    font-family: "Roboto Condensed";
+  }
+  
+
+
+}
