@@ -3,55 +3,56 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
 @media (min-width:630px){
+
   #battle {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-
- 
+    height: max-content;
+    overflow:hidden;
   }
   
 .battle-arena{
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    position: fixed;
+    position: relative;
     top:0;
     width: 80vw;
     height: 90vh;
     min-width: 650px;
-    
+    min-height: 405px;
     background-image: url('../../../public/images/Fondos/Light\ Into\ The\ Cavern\ Free\ Vector.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 0;
-    margin-top: 5vh;   
-   
+    margin-top: 5vh;  
+    display: flex;
+    flex-wrap: row wrap;
+
   }
 
   .tutorial-card-opponent{
-    position: fixed;
-    top: 10vh;
-    left: 70vw;
+    position: relative;
+    top: 5vh;
+    left: 65vw;
     flex: 1 100%;
+    
   }
 
   .tutorial-card-player{
-    position: fixed;
-    flex: 1 0 20%;
-    margin-top: 45vh;
-    margin-left: 6vw;
+    position: relative;
+    right: 10%;
+    top: 47vh;
+
   }
   
 .bottom-menu { 
-    position: absolute;
-    flex: 0 1 80%;
+    position: relative;
     top: 57vh;
     right: 0;
-    width: 55vw;
+    width: 250%;
     height: 33vh;
     z-index: 1;
+    min-height: 150px;
+    min-width: 400px;
     border: solid 6px #CEB46D;
     background: rgb(112, 112, 112);
  
@@ -84,53 +85,55 @@
     font-family: "PT Sans Narrow";
 }
 
+/*Fight*/
 .option-1 {
     opacity: 0.95;
     position: absolute;
-    font-size: 22px;
+    font-size: 2vw;
     color: #333333;
     top: 20%;
-    left: 20%;
-    text-align: left;
+    left: 15%;
     font-family: "PT Sans Narrow";
     cursor: pointer;
 }
 
-/*cards*/
+/*Cards*/
 .option-2 {
     opacity: 0.95;
     position: absolute;
-    font-size: 22px;
+    font-size: 2vw;
     color: #333333;
-    bottom: 17%;
-    left: 20%;
+    bottom: 16%;
+    left: 15%;
     text-align: left;
     font-family: "PT Sans Narrow";
     cursor: pointer;
 }
 
-/*items*/
+/*Items*/
 .option-3 {
     opacity: 0.95;
     position: absolute;
-    font-size: 22px;
+    font-size: 2vw;
     color: #333333;
     top: 20%;
-    right: 24%;
+    right: 20%;
     text-align: left;
     font-family: "PT Sans Narrow";
     cursor: pointer;
 }
+/*Run*/
 .option-4 {
     opacity: 0.95;
     position: absolute;
-    font-size: 22px;
+    font-size: 2vw;
     color: #333333;
-    bottom: 20%;
-    right: 25%;
+    bottom: 22%;
+    right: 20%;
     text-align: left;
     font-family: "PT Sans Narrow";
     cursor: pointer;
+
 }
  
   

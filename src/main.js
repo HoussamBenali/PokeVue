@@ -7,8 +7,10 @@ import store from './config/vuex'
 import Vuelidate from 'vuelidate'
 import VuejsDialog from 'vuejs-dialog';
 import 'vuejs-dialog/dist/vuejs-dialog.min.css';
-
-Vue.use(Vuelidate)
+//import vuescroll from 'vue-scroll'
+ 
+//Vue.use(vuescroll, { debounce: 600 });
+Vue.use(Vuelidate);
 Vue.use(VuejsDialog);
 
 

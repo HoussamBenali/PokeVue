@@ -65,11 +65,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   background-color: palegoldenrod;
-  background-attachment: fixed;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
-  overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch;
-  height: 100vh;
+  height: 100%;
+
      
 }
 
