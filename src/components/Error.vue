@@ -3,7 +3,9 @@
    <div class="alert alert-danger" role="alert">
      {{error}}
    </div>
-   Error
+   <h1>
+   Error 404
+   </h1>
 </div>
  
 

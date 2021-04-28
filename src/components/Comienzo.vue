@@ -73,8 +73,8 @@ export default {
   data(){
     return{
       pokemon:'',
-      CardsPath: "/images/Cartas/",
-      IconsPath: "/images/Types/",
+      CardsPath: " https://raw.githubusercontent.com/HoussamBenali/Assets/b09577915f44df2007555b8f23d58850cf26b696/images/Cartas/",
+      IconsPath: "https://raw.githubusercontent.com/HoussamBenali/Assets/b09577915f44df2007555b8f23d58850cf26b696/images/Types/",
     }
   },
   beforeRouteLeave (to, from, next) {

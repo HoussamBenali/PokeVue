@@ -28,6 +28,10 @@
         <b-nav-item href="#" right>
           <router-link to="/home" active-class="active" class="navindex">Home</router-link>
         </b-nav-item>
+        
+        <b-nav-item href="#" right>
+          <router-link to="/adventure" active-class="active" class="navindex">Adventure</router-link>
+        </b-nav-item>
  
         <b-nav-item href="#" right>
           <a href="javascript:void(0)" @click="Logout"  active-class="active" class="navindex">Logout</a>
@@ -80,6 +84,7 @@ hr{
     margin-right: auto;
     min-width: 80px;
     max-width: 300px;
+    text-align: center;
   
  }
 
@@ -103,6 +108,7 @@ hr{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: yellow;
   text-decoration: none;
+  margin: 0;
 }
 
 .link:hover{

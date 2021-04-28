@@ -1,4 +1,5 @@
 <template>
+
 <div id="loginForm">
   <div class="container0">
     <form @submit.prevent="Login">
@@ -20,6 +21,7 @@
         </div>
 
         <button class="mybtn" type="submit">Login</button>
+      
         
         <!--<div class="check">
           <input type="checkbox" checked="checked" name="remember">
@@ -47,8 +49,7 @@ import axios from 'axios';
 import Error from './Error';
 //import almacen from "../config/almacen";
 //import { required, minLength, email } from 'vuelidate/lib/validators';
-//import BaseInput from "../components/BaseInput.vue";
-
+//import $ from "jquery";
 
 export default {
   name: 'loginForm',
@@ -67,11 +68,14 @@ export default {
     methods: {
       async Login(){
         try{
+          
             const response = await axios.post('login',{
                 email: this.email,
-                password: this.password
+                password: this.password,
+
             })
-            
+            //console.log(response.data.expiration)
+            //localStorage.setItem('expires_in', response.data.expiration)
             localStorage.setItem('token', response.data.token);
             this.$store.dispatch('user',response.data.user);
 

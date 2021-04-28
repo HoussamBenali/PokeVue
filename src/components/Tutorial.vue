@@ -28,10 +28,13 @@
                 <h4 @click="selectAttack(3)" class="option-3">{{player.attacks[2]}}</h4>
                 <h4 @click="selectAttack(4)" class="option-4"> {{player.attacks[3]}}</h4>
             </div>
-            <div v-if="matchEnded" id="ended">
-              <h4 class="option-1">{{matchEndOptions[0]}}</h4>
-              <h4 class="option-2">{{matchEndOptions[1]}}</h4>
+            <div v-if="disabledOptions" id="battleOptions">
+               <!-- <h4 class="option-1">{{battleOptions[0]}}</h4>
+                <h4 class="option-2">{{battleOptions[1]}}</h4>
+                <h4 class="option-3">{{battleOptions[2]}}</h4>
+                <h4 class="option-4">{{battleOptions[3]}}</h4>-->
             </div>
+            
         </div>
     </div>
   </div>
@@ -86,7 +89,9 @@ export default {
         menu: 'options',
         attacks: false,
         options: true,
+        disabledOptions: false,
         matchEndOptions:["Yes", "No"],
+        turn: true,
         matchEnded: false,
         timeOut:'',
 
@@ -110,12 +115,24 @@ export default {
           this.opponent.name= "Bulbasaur"
           this.opponent.image='/Bulbasaur.png'
         }
-
-        
     },
 methods: {
-      hasFainted(){
-        if(this.opponent.hp <= 0 ||  this.player.hp <= 0){
+        faintAnimation: function(){
+          this.attacks = false
+          this.options = false
+          this.matchEnded = true;
+          setTimeout(() => { this.$router.push('../home')},7000)
+      },
+      
+      HeFainted(){
+        if(this.opponent.hp <= 0){
+            return true
+        } else{
+            return false
+          }
+      },
+      IFainted(){
+        if(this.player.hp <= 0){
             return true
         } else{
             return false
@@ -126,20 +143,20 @@ methods: {
         if (option == 1){
             this.attacks= true;
             this.options= false;
-            return this.battleText='Choose your attack.';
+            this.battleText='Choose your attack.';
             
         } else if (option ==2){
-            setTimeout(() => { this.battleText = "What will " + this.player.name + " do?" }, 2000)
-            return this.battleText = "You're our only hope " + this.player.name + "!";
-            
-    
+            this.battleText = "You're our only hope " + this.player.name + "!";
+            this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
+
         }else if (option==3){
-            setTimeout(() => { this.battleText = "What will " + this.player.name + " do?" }, 2000)
-            return this.battleText = "No items in bag.";
+            this.battleText = "No items in bag.";
+            this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
           
         }else if (option==4){
-            setTimeout(() => { this.battleText = "What will " + this.player.name + " do?" }, 2000)
-            return this.battleText = "Can't escape.";
+            this.battleText = "Can't escape.";
+            this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
+     
             
         }
       },
@@ -147,136 +164,136 @@ methods: {
 selectAttack(attack) {
     if (attack == 1){
         this.attacks = false
-        this.options = true
+        this.options = false
+        this.disabledOptions = true
         this.opponent.hp -= this.player.attacksDamage[attack-1]
         var percent=this.opponent.hp/this.opponent.maxHP*100
-        if(this.opponent.hp <= 0){
+        if(this.HeFainted()){
               this.opponent.HpBar = "width: 0%"
         } else{
               this.opponent.HpBar.width =percent + "%"
           }   
-        if(this.hasFainted()){
-              this.battleText = this.opponent.name + " has fainted! Play again?"
-              clearTimeout(this.timeOut);
-              this.faintAnimation()
-        } else if(this.hasFainted() === false) {
+        if(this.HeFainted()){
+            this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+            setTimeout(() => {this.battleText = this.opponent.name + " has fainted! "},2001)
+            setTimeout(() => {this.battleText = "You have won 100EXP & 100PokeCoins"},4000)
+            this.faintAnimation()
 
+        } else if(this.HeFainted() === false) {
               setTimeout(() => { 
-                if (this.player.hp>0 && this.opponent.hp>0){
-                    this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
+                if (this.IFainted()==false){
+                    this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);     
                 }  
               }, 2000);
-            
-              this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
-               return setTimeout(() => {this.opponentAttack(this.timeOut)},2000)
+
+                this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+                setTimeout(() => {this.opponentAttack()},2000)
+
           }
                   
     } else if (attack ==2){
           this.attacks = false
-          this.options = true
+          this.options = false
+          this.disabledOptions = true
           this.opponent.hp -= this.player.attacksDamage[attack-1]
           percent=this.opponent.hp/this.opponent.maxHP*100
 
-          if(this.opponent.hp <= 0){
-              this.opponent.HpBar.width = "0%"
-          } else{
+                 if(this.HeFainted()){
+              this.opponent.HpBar = "width: 0%"
+        } else{
               this.opponent.HpBar.width =percent + "%"
-            }   
-
-          if(this.hasFainted()){
-              this.battleText = this.opponent.name + " has fainted! Play again?"
-              clearTimeout(this.timeOut);
+          }   
+        if(this.HeFainted()){
+              this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+              setTimeout(() => {this.battleText = this.opponent.name + " has fainted! "},2001)
+              setTimeout(() => {this.battleText = "You have won 100EXP & 100PokeCoins"},4000)
               this.faintAnimation()
+          
 
-          } else if(this.hasFainted() === false) {
+        } else if(this.HeFainted() === false) {
               setTimeout(() => { 
-                if (this.player.hp>0 && this.opponent.hp>0){
+                if (this.IFainted()==false){
                     this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
-                }  
+                } 
               }, 2000);
-                this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
-                 return setTimeout(() => {this.opponentAttack(this.timeOut)},2000)
-            }   
+
+              this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+                setTimeout(() => {this.opponentAttack()},2000)
+      
+          }
+
     } else if (attack==3){
           this.attacks = false
-          this.options = true
+          this.options = false
+          this.disabledOptions = true
           this.opponent.hp -= this.player.attacksDamage[attack-1]
           percent=this.opponent.hp/this.opponent.maxHP*100
-          if(this.opponent.hp <= 0){
-                this.opponent.HpBar.width = "0%"
-          } else{
-                this.opponent.HpBar.width =percent + "%"
-              }   
-          if(this.hasFainted()){
-                this.battleText = this.opponent.name + " has fainted! Play again?"
-                //clearTimeout(this.timeOut);
-                this.faintAnimation()
-          } else if(this.hasFainted() === false) {
+          if(this.HeFainted()){
+              this.opponent.HpBar = "width: 0%"
+        } else{
+              this.opponent.HpBar.width =percent + "%"
+          }   
+        if(this.HeFainted()){
+          this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+             setTimeout(() => {this.battleText = this.opponent.name + " has fainted! "},2001)
+             setTimeout(() => {this.battleText = "You have won 100EXP & 100PokeCoins"},4000)
+             this.faintAnimation()
+        } else if(this.HeFainted() === false) {
               setTimeout(() => { 
-                if (this.player.hp>0 && this.opponent.hp>0){
+                if (this.IFainted()==false){
                     this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
-                }  
+                }
               }, 2000);
-                this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
-                return setTimeout(() => {this.opponentAttack(this.timeOut)},2000)
-                
-            }  
+
+               this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+                setTimeout(() => {this.opponentAttack()},2000)  
+          }
 
       }else if (attack==4){
           this.attacks = false
-          this.options = true
+          this.options = false
+          this.disabledOptions = true
           this.opponent.hp -= this.player.attacksDamage[attack-1]
           percent=this.opponent.hp/this.opponent.maxHP*100
-          if(this.opponent.hp <= 0){
-              this.opponent.HpBar.width = "0%"
-          } else{
+                  if(this.HeFainted()){
+              this.opponent.HpBar = "width: 0%"
+        } else{
               this.opponent.HpBar.width =percent + "%"
-            }   
-          if(this.hasFainted()){
-              this.battleText = this.opponent.name + " has fainted! Play again?"
-              clearTimeout(this.timeOut);
+          }   
+        if(this.HeFainted()){
+              this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+              setTimeout(() => {this.battleText = this.opponent.name + " has fainted! "},2001)
+              setTimeout(() => {this.battleText = "You have won 100EXP & 100PokeCoins"},4000)
               this.faintAnimation()
-          } else if(this.hasFainted() === false) {
 
-              setTimeout(() => { 
-                if (this.player.hp>0 && this.opponent.hp>0){
-                    this.timeOut=setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
-                }  
-              }, 2000);
-                      
-                this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
-                return setTimeout(() => {this.opponentAttack(this.timeOut)},2000)
-            }
+        } else if(this.HeFainted() === false) {
+                 setTimeout(() => {this.battleText = "What will " + this.player.name + " do?"}, 2000);
+                 this.battleText = this.player.name + " used " + this.player.attacks[attack-1] + "!"
+                 setTimeout(() => {this.opponentAttack()},2000)
+          }
       }
               
   },
-      faintAnimation: function(){
-          this.attacks = false;
-          this.matchEnded = true;
-      },
-      
-      opponentAttack(timeOut){
+
+      opponentAttack(){
         
           var random = Math.floor((Math.random() * 4) + 1)
           this.player.hp -=  this.opponent.attacksDamage[random-1]
           var percent=this.player.hp/this.player.maxHP*100
-          if(this.player.hp <= 0){
+          if(this.IFainted()){
               this.player.HpBar = "width: 0%"
           } else{
               this.player.HpBar.width = percent + "%"
           }   
           
-          if(this.hasFainted()){
+          if(this.IFainted()){
             this.battleText = this.opponent.name + " used " + this.opponent.attacks[random-1] + "!" 
             this.faintAnimation()
-            this.battleText = this.player.name + " has fainted! Play again?"
-            this.attacks = false
-            this.options = false
-            clearTimeout(timeOut);
-          } else if(this.hasFainted() === false) {
+            setTimeout(() => {this.battleText = this.player.name + " has fainted!"},2001)
+            setTimeout(() => {this.battleText = "You lost and ran away home while crying"},4000)
+          } else if(this.IFainted() === false) {
                 this.battleText = this.opponent.name + " used " + this.opponent.attacks[random-1] + "!"
-                this.attacks = false
-                this.options = true
+                setTimeout(() => { this.attacks = false, this.options = true, this.disabledOptions = false},2000)
              
            }
         },

@@ -5,7 +5,7 @@
                 <div class="hp-bar">
                     <div v-if="Player" :style="HPStyle" class="hp-bar-fill-player"></div>
                     <div v-if="!Player" :style="HPStyle" class="hp-bar-fill-opponent"></div>
-                    <h4 v-if="Player" class="hp">{{HP}}/{{HP}}</h4>
+                    <h4 v-if="Player" class="hp">{{HP}}/{{maxHP}}</h4>
                 </div> 
                 <img v-if="hasHP" class="card-img-top" :src="CardsPath+Name+'.png'" :alt="Name">
                 <span class="card-name">
@@ -13,12 +13,12 @@
                         {{Name}}
                     <img class="types-icon" :src="IconsPath+Type+'.png'" />
                 </span>
-                <span class="card-text">ATK: {{ATK}}</span>
+                <!--<span class="card-text">ATK: {{ATK}}</span>
                 <span class="card-text">DEF: {{DEF}}</span>
-                <span class="card-attack">SPD: {{SPD}}</span>
+                <span class="card-attack">SPD: {{SPD}}</span>-->
             </div>
-            <div v-else-if="!notFlipped" class="card">
-                <span class="card-name">
+            <div v-else-if="!notFlipped" class="card behind">
+                <span class="behind-card-name">
                     <img class="types-icon" :src="IconsPath+Type+'.png'" />
                         {{Name}}
                     <img class="types-icon" :src="IconsPath+Type+'.png'" />
@@ -37,9 +37,8 @@ export default {
     name: 'Carta',
     data(){
             return {
-                CardsPath: "/images/Cartas/",
-                IconsPath: "/images/Types/",
-                maxHP: this.HP,
+                CardsPath: " https://raw.githubusercontent.com/HoussamBenali/Assets/b09577915f44df2007555b8f23d58850cf26b696/images/Cartas/",
+                IconsPath: "https://raw.githubusercontent.com/HoussamBenali/Assets/b09577915f44df2007555b8f23d58850cf26b696/images/Types/",
                 notFlipped: true   
                 
             };
@@ -54,9 +53,9 @@ export default {
         ATK:{},
         DEF: {},
         SPD: {},
-        HpBar: {}
+        HpBar: {},
+        maxHP: {},
     },
-
     computed: {
             HPStyle(){    
                 let color = '#f02b2b';

@@ -7,9 +7,9 @@
   #battle {
     display: flex;
     flex-wrap: wrap;
-    
+    text-align: center;
     height: 70vh;
-    background-image: url('../../../public/images/Fondos/Light\ Into\ The\ Cavern\ Free\ Vector.jpg');
+    background-image: url('../../../public/images/Fondos/Cave.jpg');
     background-repeat: no-repeat;
     -webkit-background-size:  100% 100%; 
     -moz-background-size:  100% 100%; 
@@ -34,6 +34,7 @@
 }
 
 .bottom-menu { 
+  overflow: hidden !important;
   position: absolute;
   bottom: 0vh;
   right: 0;
@@ -84,11 +85,13 @@
   cursor: pointer;
 }
 .option-2 {
+  margin: 0;
+  padding: 0;
   opacity: 0.95;
   position: absolute;
   font-size: 20px;
   color: #333333;
-  bottom: 8%;
+  bottom: 20%;
   left: 20%;
   text-align: left;
   font-family: "PT Sans Narrow";
@@ -100,7 +103,7 @@
   font-size: 20px;
   color: #333333;
   top: 15%;
-  right: 23%;
+  left: 65%;
   text-align: left;
   font-family: "PT Sans Narrow";
   cursor: pointer;
@@ -110,8 +113,8 @@
   position: absolute;
   font-size: 20px;
   color: #333333;
-  bottom: 15%;
-  right: 24%;
+  bottom: 20%;
+  left: 65%;
   text-align: left;
   font-family: "PT Sans Narrow";
   cursor: pointer;
